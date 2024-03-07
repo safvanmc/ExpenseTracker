@@ -236,10 +236,10 @@ class Home extends StatelessWidget {
                     children: [
                       RadioListTile(
                         activeColor: Colors.black,
-                        title: const Text(
+                        title: Text(
                           "Income",
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 18.sp, fontWeight: FontWeight.bold),
                         ),
                         value: "Income",
                         groupValue: pro.selectvalue,
@@ -249,10 +249,10 @@ class Home extends StatelessWidget {
                       ),
                       RadioListTile(
                         activeColor: Colors.black,
-                        title: const Text(
+                        title: Text(
                           "Expense",
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 18.sp, fontWeight: FontWeight.bold),
                         ),
                         value: "Expense",
                         groupValue: pro.selectvalue,
@@ -269,6 +269,7 @@ class Home extends StatelessWidget {
         ),
         actions: [
           MaterialButton(
+            color: Colors.black,
             shape: RoundedRectangleBorder(
                 side: BorderSide(), borderRadius: BorderRadius.circular(10.w)),
             onPressed: () async {
@@ -285,15 +286,18 @@ class Home extends StatelessWidget {
               //     ? _provider.addInc(int.parse(amount.text))
               //     : _provider.addExp(int.parse(amount.text));
             },
-            child: Text('Save'),
+            child: Text('Save',
+                style: TextStyle(fontSize: 15.sp, color: Colors.white)),
           ),
           MaterialButton(
+            color: Colors.black,
             shape: RoundedRectangleBorder(
                 side: BorderSide(), borderRadius: BorderRadius.circular(10.w)),
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('cancel'),
+            child: Text('cancel',
+                style: TextStyle(fontSize: 15.sp, color: Colors.white)),
           )
         ],
       ),
@@ -311,6 +315,7 @@ class Home extends StatelessWidget {
           cursorColor: Colors.black,
           decoration: InputDecoration(
             hintText: text,
+            hintStyle: TextStyle(fontSize: 15.sp),
             isDense: true,
             focusedBorder:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(10.w)),
