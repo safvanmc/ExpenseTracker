@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "27359947129",
+    "project_id": "moneytracker-65755",
+    "storage_bucket": "moneytracker-65755.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27359947129:android:ef74223226d022133c27a8",
+        "android_client_info": {
+          "package_name": "com.example.expensetracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8li_SgyNPojACO10H1cX1r_x8xPek0FM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
