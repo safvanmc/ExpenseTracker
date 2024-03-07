@@ -199,8 +199,10 @@ class Home extends StatelessWidget {
     var selecteditem;
     final _provider = Provider.of<RadioBtn>(context, listen: false);
     showDialog(
+      // barrierColor: Colors.white,
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
         title: Center(
           child: Text(
             'Add income and expenses',
@@ -218,6 +220,9 @@ class Home extends StatelessWidget {
                     return 'empty field';
                   }
                 }, TextInputType.text),
+                SizedBox(
+                  height: 10.h,
+                ),
                 CustomTextfeild(amount, 'amount', (value) {
                   if (value == null || value.isEmpty) {
                     print('saf');
@@ -227,9 +232,10 @@ class Home extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Consumer<RadioBtn>(
                   builder: (context, pro, child) => Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RadioListTile(
-                        // selected: true,
+                        activeColor: Colors.black,
                         title: const Text(
                           "Income",
                           style: TextStyle(
@@ -242,6 +248,7 @@ class Home extends StatelessWidget {
                         },
                       ),
                       RadioListTile(
+                        activeColor: Colors.black,
                         title: const Text(
                           "Expense",
                           style: TextStyle(
@@ -263,8 +270,7 @@ class Home extends StatelessWidget {
         actions: [
           MaterialButton(
             shape: RoundedRectangleBorder(
-                side: BorderSide(width: 2.w),
-                borderRadius: BorderRadius.circular(10.w)),
+                side: BorderSide(), borderRadius: BorderRadius.circular(10.w)),
             onPressed: () async {
               if (formkey.currentState!.validate())
                 await FirebaseFirestore.instance.collection('money').add({
@@ -283,8 +289,7 @@ class Home extends StatelessWidget {
           ),
           MaterialButton(
             shape: RoundedRectangleBorder(
-                side: BorderSide(width: 2.w),
-                borderRadius: BorderRadius.circular(10.w)),
+                side: BorderSide(), borderRadius: BorderRadius.circular(10.w)),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -295,13 +300,24 @@ class Home extends StatelessWidget {
     );
   }
 
-  TextFormField CustomTextfeild(TextEditingController controller, String text,
+  SizedBox CustomTextfeild(TextEditingController controller, String text,
       String? Function(String?)? validator, TextInputType? keyboardType) {
-    return TextFormField(
-      keyboardType: keyboardType,
-      validator: validator,
-      controller: controller,
-      decoration: InputDecoration(hintText: text),
+    return SizedBox(
+      // height: 50.h,
+      child: TextFormField(
+          keyboardType: keyboardType,
+          validator: validator,
+          controller: controller,
+          cursorColor: Colors.black,
+          decoration: InputDecoration(
+            hintText: text,
+            isDense: true,
+            focusedBorder:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.w)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.w),
+            ),
+          )),
     );
   }
 }
