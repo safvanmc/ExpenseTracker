@@ -83,27 +83,43 @@ class Home extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.all(10).w,
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          height: 50.h,
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+          // height: 50.h,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10.r),
               boxShadow: [
                 BoxShadow(
-                    offset: Offset(1, 0),
-                    blurRadius: 3,
+                    offset: Offset(1.1, 1.5),
+                    blurRadius: 4,
                     color: Colors.grey,
                     spreadRadius: 2)
               ]),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Income:${totalinc}',
-                style: TextStyle(color: Colors.green, fontSize: 15.sp),
+              Column(
+                children: [
+                  Text(
+                    'Income',
+                    style: TextStyle(color: Colors.green, fontSize: 15.sp),
+                  ),
+                  Text(
+                    '${totalinc}',
+                    style: TextStyle(color: Colors.green, fontSize: 13.sp),
+                  ),
+                ],
               ),
-              Text('Expense:${totalexp}',
-                  style: TextStyle(color: Colors.red, fontSize: 15.sp)),
+              Column(
+                children: [
+                  Text('Expense',
+                      style: TextStyle(color: Colors.red, fontSize: 15.sp)),
+                  Text(
+                    '${totalexp}',
+                    style: TextStyle(color: Colors.red, fontSize: 13.sp),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -112,6 +128,7 @@ class Home extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: snapshot.data?.docs.length,
                   padding: EdgeInsets.all(20.w),
+                  physics: ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
@@ -140,7 +157,9 @@ class Home extends StatelessWidget {
                               children: [
                                 Text(
                                   snapshot.data?.docs[index]['Source'],
-                                  style: TextStyle(fontSize: 20.sp),
+                                  style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w500),
                                 ),
                                 Text(data[index]['date'],
                                     style: TextStyle(fontSize: 10.sp))
